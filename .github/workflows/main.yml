@@ -60,7 +60,7 @@ jobs:
           password: ${{ secrets.FTP_PW_FOR_TESTING014 }}
           protocol: ftps
           port: ${{ secrets.FTP_PORT_FOR_TESTING014 }}
-          local-dir: ./astra-child
+          local-dir: ./astra-child/
           server-dir: public_html/wp-content/themes
           exclude: |
             **/.git*
@@ -76,7 +76,7 @@ jobs:
           password: ${{ secrets.FTP_PW_FOR_TESTING014 }}
           protocol: ftps
           port: ${{ secrets.FTP_PORT_FOR_TESTING014 }}
-          local-dir: ./includes-bundle
+          local-dir: ./includes-bundle/
           server-dir: public_html/includes
           exclude: |
             **/.git*
