@@ -1,0 +1,83 @@
+name: Deploy to Hostinger via FTP
+
+on:
+  push:
+    branches:
+      - main    # change if you deploy from a different branch
+  workflow_dispatch: {}  # lets you run manually from the Actions tab
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Optional: show what commit is deploying
+      - name: Show git status
+        run: |
+          git rev-parse --short HEAD
+          ls -la
+
+      # Prepare an includes-bundle directory with only the files you want to upload
+      - name: Prepare includes bundle
+        run: |
+          set -e
+          mkdir -p includes-bundle
+          cp AudioScheduledTimeBackUp.php includes-bundle/
+          cp checkAudioPlayed.php includes-bundle/
+          cp fetchFiles.php includes-bundle/
+          cp filterExpiredEntries.php includes-bundle/
+          cp getHistoricalArchive.php includes-bundle/
+          cp getPopularityArchive.php includes-bundle/
+          cp getRandomArchive.php includes-bundle/
+          cp getRecentArchive.php includes-bundle/
+          cp getScheduledMp3s.php includes-bundle/
+          cp getScheduledVideos.php includes-bundle/
+          cp getUpcomingVideos.php includes-bundle/
+          cp logout.php includes-bundle/
+          cp submitMp3.php includes-bundle/
+          cp updateAudioPlayedStatus.php includes-bundle/
+          cp updateAudioTimePlayed.php includes-bundle/
+          cp updateAudioTimes.php includes-bundle/
+          cp UpdateSkippedAudio.php includes-bundle/
+          cp updateVideoAsPlayed.php includes-bundle/
+          cp updateVideoPlayed.php includes-bundle/
+          cp updateVideoStatus.php includes-bundle/
+          cp uploadRecordedAudio.php includes-bundle/
+          cp VideoSubmit.php includes-bundle/
+          cp VoteDown.php includes-bundle/
+          cp VoteUp.php includes-bundle/
+          echo "Bundle contents:" && ls -la includes-bundle
+
+      # Deploy the astra-child theme into wp-content/themes
+      - name: Upload astra-child theme
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST_FOR_TESTING014 }}
+          username: ${{ secrets.FTP_USERNAME_FOR_TESTING014 }}
+          password: ${{ secrets.FTP_PW_FOR_TESTING014 }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT_FOR_TESTING014 }}
+          local-dir: ./astra-child
+          server-dir: public_html/wp-content/themes
+          exclude: |
+            **/.git*
+            **/.DS_Store
+            **/node_modules/**
+
+      # Deploy only the selected PHP files to public_html/includes
+      - name: Upload selected PHP files to includes
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST_FOR_TESTING014 }}
+          username: ${{ secrets.FTP_USERNAME_FOR_TESTING014 }}
+          password: ${{ secrets.FTP_PW_FOR_TESTING014 }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT_FOR_TESTING014 }}
+          local-dir: ./includes-bundle
+          server-dir: public_html/includes
+          exclude: |
+            **/.git*
+            **/.DS_Store
