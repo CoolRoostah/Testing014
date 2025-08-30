@@ -61,13 +61,13 @@ jobs:
           protocol: ftps
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./wp-content/themes/astra-child/
-          server-dir: public_html/wp-content/themes/
+          server-dir: wp-content/themes/
           exclude: |
             **/.git*
             **/.DS_Store
             **/node_modules/**
 
-      # Deploy only the selected PHP files to public_html/includes
+      # Deploy only the selected PHP files to includes
       - name: Upload selected PHP files to includes
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -77,7 +77,7 @@ jobs:
           protocol: ftps
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./includes-bundle/
-          server-dir: public_html/includes/
+          server-dir: includes/
           exclude: |
             **/.git*
             **/.DS_Store
