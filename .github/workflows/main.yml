@@ -61,7 +61,7 @@ jobs:
           protocol: ftps
           port: ${{ secrets.FTP_PORT_FOR_TESTING014 }}
           local-dir: ./astra-child/
-          server-dir: public_html/wp-content/themes
+          server-dir: public_html/wp-content/themes/
           exclude: |
             **/.git*
             **/.DS_Store
@@ -77,7 +77,7 @@ jobs:
           protocol: ftps
           port: ${{ secrets.FTP_PORT_FOR_TESTING014 }}
           local-dir: ./includes-bundle/
-          server-dir: public_html/includes
+          server-dir: public_html/includes/
           exclude: |
             **/.git*
             **/.DS_Store
