@@ -25,30 +25,30 @@ jobs:
         run: |
           set -e
           mkdir -p includes-bundle
-          cp AudioScheduledTimeBackUp.php includes-bundle/
-          cp checkAudioPlayed.php includes-bundle/
-          cp fetchFiles.php includes-bundle/
-          cp filterExpiredEntries.php includes-bundle/
-          cp getHistoricalArchive.php includes-bundle/
-          cp getPopularityArchive.php includes-bundle/
-          cp getRandomArchive.php includes-bundle/
-          cp getRecentArchive.php includes-bundle/
-          cp getScheduledMp3s.php includes-bundle/
-          cp getScheduledVideos.php includes-bundle/
-          cp getUpcomingVideos.php includes-bundle/
-          cp logout.php includes-bundle/
-          cp submitMp3.php includes-bundle/
-          cp updateAudioPlayedStatus.php includes-bundle/
-          cp updateAudioTimePlayed.php includes-bundle/
-          cp updateAudioTimes.php includes-bundle/
-          cp UpdateSkippedAudio.php includes-bundle/
-          cp updateVideoAsPlayed.php includes-bundle/
-          cp updateVideoPlayed.php includes-bundle/
-          cp updateVideoStatus.php includes-bundle/
-          cp uploadRecordedAudio.php includes-bundle/
-          cp VideoSubmit.php includes-bundle/
-          cp VoteDown.php includes-bundle/
-          cp VoteUp.php includes-bundle/
+          cp includes/AudioScheduledTimeBackUp.php includes-bundle/
+          cp includes/checkAudioPlayed.php includes-bundle/
+          cp includes/fetchFiles.php includes-bundle/
+          cp includes/filterExpiredEntries.php includes-bundle/
+          cp includes/getHistoricalArchive.php includes-bundle/
+          cp includes/getPopularityArchive.php includes-bundle/
+          cp includes/getRandomArchive.php includes-bundle/
+          cp includes/getRecentArchive.php includes-bundle/
+          cp includes/getScheduledMp3s.php includes-bundle/
+          cp includes/getScheduledVideos.php includes-bundle/
+          cp includes/getUpcomingVideos.php includes-bundle/
+          cp includes/logout.php includes-bundle/
+          cp includes/submitMp3.php includes-bundle/
+          cp includes/updateAudioPlayedStatus.php includes-bundle/
+          cp includes/updateAudioTimePlayed.php includes-bundle/
+          cp includes/updateAudioTimes.php includes-bundle/
+          cp includes/UpdateSkippedAudio.php includes-bundle/
+          cp includes/updateVideoAsPlayed.php includes-bundle/
+          cp includes/updateVideoPlayed.php includes-bundle/
+          cp includes/updateVideoStatus.php includes-bundle/
+          cp includes/uploadRecordedAudio.php includes-bundle/
+          cp includes/VideoSubmit.php includes-bundle/
+          cp includes/VoteDown.php includes-bundle/
+          cp includes/VoteUp.php includes-bundle/
           echo "Bundle contents:" && ls -la includes-bundle
 
       # Deploy the astra-child theme into wp-content/themes
